@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BunyController : MonoBehaviour {
 
@@ -22,4 +23,15 @@ public class BunyController : MonoBehaviour {
         }
         myAnim.SetFloat("vVelocity",myRigidBody.velocity.y);
 	}
+
+    //Collision detection with cactus
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Application.LoadLevel(Application.loadedLevel);
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))       
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+
+    }
 }
